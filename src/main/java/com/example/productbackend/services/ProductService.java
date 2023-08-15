@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.example.productbackend.entities.Product;
 import com.example.productbackend.repositories.ProductRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ProductService {
     
@@ -20,5 +22,12 @@ public class ProductService {
         return this.repository.findAll();
         
     }
+
+    public Product getProduct(long id){
+        return this.repository.findById(id)
+                               .orElseThrow(
+                                () -> new EntityNotFoundException("Product not found")
+                                );
+}
 
 }
