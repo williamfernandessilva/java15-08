@@ -28,6 +28,11 @@ public class ProductService {
                                .orElseThrow(
                                 () -> new EntityNotFoundException("Product not found")
                                 );
-}
+    }
+
+    public void deleteProductById(long id) {
+
+        
+    }
 
 }

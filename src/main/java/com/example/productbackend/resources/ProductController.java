@@ -33,4 +33,10 @@ public class ProductController {
            var product = this.service.getProduct(id);
            return ResponseEntity.ok(product);
      }
+
+     @GetMapping ("{id}")
+     public ResponseEntity<Void> deleteProduct(@PathVariable long id){
+           this.service.deleteProductById(id);
+           return ResponseEntity.noContent().build();
+     }
 }
