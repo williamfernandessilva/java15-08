@@ -34,9 +34,36 @@ public class ProductController {
            return ResponseEntity.ok(product);
      }
 
-     @GetMapping ("{id}")
+     @DeleteMapping ("{id}")
      public ResponseEntity<Void> deleteProduct(@PathVariable long id){
            this.service.deleteProductById(id);
            return ResponseEntity.noContent().build();
      }
+
+      @PostMapping 
+     public ResponseEntity<Product> save(@RequestBody Product product){
+       var saveProduct = this.service.save(product);
+
+
+       URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedProduct.getId())
+                .toUri();
+
+       return ResponseEntity.created(location).body(saveProduct);
+     
+     }
+
+     @PutMapping ("{id}")
+     public ResponseEntity<product> update(RequestBody Product product,
+                                    @PathVariable long id
+     
+     ){
+      this.service.update(id, product);
+      return ResponseEntity.ok().build();
+
+     }
+
+     
 }

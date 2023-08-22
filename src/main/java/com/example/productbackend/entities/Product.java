@@ -14,7 +14,7 @@ public class Product implements Serializable {
     @Id
     private Long id;
 
-    @Column(length = 1024,nullable = false, unique = true, name ="product_name")
+    @Column(length = 1024,nullable = false, name ="product_name")
     private String name;
     
     private Double price;
